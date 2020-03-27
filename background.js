@@ -21,22 +21,25 @@
 ) */
 
 chrome.runtime.onMessage.addListener(
-    function(request, sender, sendResponse) {
+    function (request, sender, sendResponse) {
+        /* 
+        优先使用完整url请求，没有的话使用config.js中的baseUrl和path拼接成url
+        */
         axios({
-                method: request.method,
-                url: request.url,
-                data: request.data
-            })
-            .then(function(response) {
+            method: request.method,
+            url: request.url ? request.url : `${baseUrl}/${request.path}`,
+            data: request.data
+        })
+            .then(function (response) {
                 // handle success
                 console.log(response)
                 sendResponse(response.data)
             })
-            .catch(function(error) {
+            .catch(function (error) {
                 // handle error
                 console.error(error)
             })
-            .then(function() {
+            .then(function () {
                 // always executed
             })
         return true; // Will respond asynchronously.

@@ -1,15 +1,16 @@
 {
     "manifest_version": 2,
     "name": "previews for javlib",
-    "version": "0.5.0",
-    "description": "common",
+    "version": "0.7.0",
+    "description": "配置化+分离",
     "permissions": [
         "http://*/"
     ],
     "background": {
         "scripts": [
-            "background.js",
-            "axios.min.js"
+            "config.js",
+            "axios.min.js",
+            "background.js"
         ]
     },
     "content_scripts": [{
@@ -18,10 +19,13 @@
                 "*://www.javbus.com/*-*"
             ],
             "js": [
-                "vue.js",
                 "axios.min.js",
-                "moment-with-locales.min.js"
-            ]
+                "moment-with-locales.min.js",
+                "config.js",
+                "common.js",
+                "vue.js"
+            ],
+            "css": ["mystyle.css"]
         },
         {
             "matches": [
