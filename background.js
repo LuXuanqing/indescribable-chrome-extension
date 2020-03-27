@@ -28,7 +28,8 @@ chrome.runtime.onMessage.addListener(
         axios({
             method: request.method,
             url: request.url ? request.url : `${baseUrl}/${request.path}`,
-            data: request.data
+            data: request.data,
+            headers: {'From-Url': request.href}
         })
             .then(function (response) {
                 // handle success

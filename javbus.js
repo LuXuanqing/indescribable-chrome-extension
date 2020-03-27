@@ -50,6 +50,7 @@ let vm = new Vue({
         chrome.runtime.sendMessage({
             method: 'post',
             path: `api/javbus/${this.id}`,
+            href: window.location.href,
             data: {
                 imgs: this.imgs
             }

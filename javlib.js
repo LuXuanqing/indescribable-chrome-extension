@@ -92,6 +92,7 @@ let vm = new Vue({
         chrome.runtime.sendMessage({
             method: 'post',
             path: `api/javlib/${this.id}`,
+            href: window.location.href,
             data: {
                 genres: this.genres,
                 cast: this.casts
