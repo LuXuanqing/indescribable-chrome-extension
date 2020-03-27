@@ -1,0 +1,43 @@
+{
+    "manifest_version": 2,
+    "name": "previews for javlib",
+    "version": "0.5.0",
+    "description": "common",
+    "permissions": [
+        "http://*/"
+    ],
+    "background": {
+        "scripts": [
+            "background.js",
+            "axios.min.js"
+        ]
+    },
+    "content_scripts": [{
+            "matches": [
+                "*://www.javlibrary.com/cn/?v=*",
+                "*://www.javbus.com/*-*"
+            ],
+            "js": [
+                "vue.js",
+                "axios.min.js",
+                "moment-with-locales.min.js"
+            ]
+        },
+        {
+            "matches": [
+                "*://www.javlibrary.com/cn/?v=*"
+            ],
+            "js": [
+                "javlib.js"
+            ]
+        },
+        {
+            "matches": [
+                "*://www.javbus.com/*-*"
+            ],
+            "js": [
+                "javbus.js"
+            ]
+        }
+    ]
+}
