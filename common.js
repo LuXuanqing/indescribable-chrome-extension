@@ -16,7 +16,8 @@ const textTemplateCommon = `
         <button :class="[isDislike ? 'smalldarkbutton' : 'smallbutton']" @click="disLike">不感兴趣</button>
         <button :class="[isNeedHd ? 'smalldarkbutton' : 'smallbutton']" @click="needHd">需要HD资源</button>
         <button class="smallbutton">
-            <a :href="'https://www.javbus.com/'+this.id" target="_blank">前往javbus.com</a>
+            <a v-if="host == 'www.javlibrary.com'" :href="'https://www.javbus.com/'+this.id" target="_blank">前往javbus.com</a>
+            <a v-else :href="'http://www.javlibrary.com/cn/vl_searchbyid.php?keyword='+this.id" target="_blank">前往javlib</a>
         </button>
     </div>
     <hr class="grey">
