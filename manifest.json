@@ -4,7 +4,8 @@
     "version": "0.7.0",
     "description": "配置化+分离",
     "permissions": [
-        "http://*/"
+        "http://*/",
+        "storage"
     ],
     "background": {
         "scripts": [
@@ -13,7 +14,9 @@
             "background.js"
         ]
     },
-    "content_scripts": [{
+    "options_page": "options.html",
+    "content_scripts": [
+        {
             "matches": [
                 "*://www.javlibrary.com/cn/?v=*",
                 "*://www.javbus.com/*-*"
@@ -25,7 +28,9 @@
                 "common.js",
                 "vue.js"
             ],
-            "css": ["mystyle.css"]
+            "css": [
+                "mystyle.css"
+            ]
         },
         {
             "matches": [

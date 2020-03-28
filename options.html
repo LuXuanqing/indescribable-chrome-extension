@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extension Options</title>
+</head>
+
+<body>
+    <label for="protocol"></label>
+    <select id="protocol">
+        <option value="http://">http://</option>
+        <option value="https://">https://</option>
+    </select>
+    <label for="host"></label>
+    <select id="host">
+        <option value="localhost">loaclhost</option>
+        <option value="raspberrypi">raspberrypi</option>
+    </select>
+    <label for="port"></label>
+    <input id="port" type="number" placeholder="5000">
+
+    <div id="status"></div>
+    <button id="save">Save</button>
+
+    <script src="options.js"></script>
+</body>
+
+</html>

@@ -19,15 +19,40 @@
         }
     }
 ) */
+options = {
+    baseUrl: 'http://localhost:5000'
+}
+
+function loadOptions() {
+    chrome.storage.sync.get({
+        baseUrl: options.baseUrl
+    }, function (items) {
+        console.log(items)
+        options.baseUrl = items.baseUrl
+    })
+}
+
+loadOptions()
 
 chrome.runtime.onMessage.addListener(
     function (request, sender, sendResponse) {
+        console.log('request:')
+        console.log(request)
+        console.log('sender:')
+        console.log(sender)
+
+        if (request == 'loadOptions') {
+            loadOptions()
+            sendResponse('已更新options')
+            return true
+        }
+        
         /* 
         优先使用完整url请求，没有的话使用config.js中的baseUrl和path拼接成url
         */
         axios({
             method: request.method,
-            url: request.url ? request.url : `${baseUrl}/${request.path}`,
+            url: request.url ? request.url : `${options.baseUrl}/${request.path}`,
             data: request.data,
             headers: {'From-Url': request.href}
         })
@@ -43,6 +68,6 @@ chrome.runtime.onMessage.addListener(
             .then(function () {
                 // always executed
             })
-        return true; // Will respond asynchronously.
+        return true // Will respond asynchronously.
     }
 )
